@@ -18,7 +18,7 @@ public final class ElementT extends Element {
 
     @Override
     public Set<Class<? extends Element>> allowedChildElements() {
-        return Set.of(ElementEref.class, ElementList.class, ElementSpanx.class, ElementSourcecode.class);
+        return Set.of(ElementEref.class, ElementList.class, ElementSpanx.class, ElementSourcecode.class, ElementUl.class);
     }
 
     @Override

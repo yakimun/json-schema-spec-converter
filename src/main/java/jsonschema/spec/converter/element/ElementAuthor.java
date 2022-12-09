@@ -44,7 +44,16 @@ public final class ElementAuthor extends Element {
 
     @Override
     public String convert(Map<String, Anchor> anchors) {
-        return elementOrganization.convert(anchors) + elementAddress.convert(anchors);
+        var content = "### " + fullname;
+        if (role != null) {
+            content += " (*" + role + "*)";
+        }
+        content += "\n\n";
+        if (elementOrganization != null) {
+            content += elementOrganization.convert(anchors);
+        }
+
+        return content + elementAddress.convert(anchors);
     }
 
     public String fullname() {

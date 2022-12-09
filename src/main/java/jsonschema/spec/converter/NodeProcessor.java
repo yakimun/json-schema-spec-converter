@@ -1,6 +1,5 @@
 package jsonschema.spec.converter;
 
-import org.w3c.dom.Node;
 import jsonschema.spec.converter.element.Context;
 import jsonschema.spec.converter.element.Element;
 import jsonschema.spec.converter.element.ElementAbstract;
@@ -19,6 +18,7 @@ import jsonschema.spec.converter.element.ElementFigure;
 import jsonschema.spec.converter.element.ElementFormat;
 import jsonschema.spec.converter.element.ElementFront;
 import jsonschema.spec.converter.element.ElementKeyword;
+import jsonschema.spec.converter.element.ElementLi;
 import jsonschema.spec.converter.element.ElementList;
 import jsonschema.spec.converter.element.ElementMiddle;
 import jsonschema.spec.converter.element.ElementNote;
@@ -37,9 +37,11 @@ import jsonschema.spec.converter.element.ElementStreet;
 import jsonschema.spec.converter.element.ElementT;
 import jsonschema.spec.converter.element.ElementText;
 import jsonschema.spec.converter.element.ElementTitle;
+import jsonschema.spec.converter.element.ElementUl;
 import jsonschema.spec.converter.element.ElementUri;
 import jsonschema.spec.converter.element.ElementWorkgroup;
 import jsonschema.spec.converter.element.ElementXref;
+import org.w3c.dom.Node;
 
 import java.util.HashSet;
 
@@ -71,6 +73,7 @@ public class NodeProcessor {
             case "format" -> new ElementFormat();
             case "front" -> new ElementFront();
             case "keyword" -> new ElementKeyword();
+            case "li" -> new ElementLi();
             case "list" -> new ElementList();
             case "middle" -> new ElementMiddle();
             case "note" -> new ElementNote();
@@ -88,12 +91,13 @@ public class NodeProcessor {
             case "street" -> new ElementStreet();
             case "t" -> new ElementT();
             case "title" -> new ElementTitle();
+            case "ul" -> new ElementUl();
             case "uri" -> new ElementUri();
             case "workgroup" -> new ElementWorkgroup();
             case "xref" -> new ElementXref();
             case "#cdata-section" -> new ElementCDataSection(node.getNodeValue());
             case "#text" -> new ElementText(node.getNodeValue());
-            default -> throw new RuntimeException();
+            default -> throw new RuntimeException(node.getNodeName());
         };
     }
 

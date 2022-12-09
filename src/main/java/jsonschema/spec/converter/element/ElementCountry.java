@@ -18,6 +18,6 @@ public final class ElementCountry extends Element {
 
     @Override
     public String convert(Map<String, Anchor> anchors) {
-        return elementText.convert(anchors) + "\n\n";
+        return elementText.convert(anchors) + "\n";
     }
 }

@@ -55,7 +55,7 @@ public final class ElementReference extends Element {
                     .replace("$", "")
                     .replace(".", "");
 
-            context.addAnchor(anchor, new Anchor(preparedAnchor, "", ""));
+            context.addAnchor(anchor, new Anchor(preparedAnchor, "", anchor));
         }
     }
 

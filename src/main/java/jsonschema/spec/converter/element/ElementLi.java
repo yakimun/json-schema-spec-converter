@@ -3,7 +3,7 @@ package jsonschema.spec.converter.element;
 import java.util.Map;
 import java.util.Set;
 
-public final class ElementUri extends Element {
+public final class ElementLi extends Element {
     private ElementText elementText;
 
     @Override
@@ -18,6 +18,6 @@ public final class ElementUri extends Element {
 
     @Override
     public String convert(Map<String, Anchor> anchors) {
-        return "URI: " + elementText.convert(anchors) + "\n\n";
+        return elementText.convert(anchors);
     }
 }

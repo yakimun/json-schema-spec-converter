@@ -47,7 +47,11 @@ public final class ElementXref extends Element {
                 default -> throw new RuntimeException();
             };
         } else {
-            text = "Section " + anchor.sectionNumber();
+            var firstChar = anchor.sectionNumber().charAt(0);
+
+            if (Character.isDigit(firstChar)) text = "Section ";
+            if (Character.isLetter(firstChar) && !anchor.sectionNumber().startsWith("Appendix")) text = "Appendix ";
+            text += anchor.sectionNumber();
         }
 
         return "[" + text + "](" + "#" + anchor.value() + ")";

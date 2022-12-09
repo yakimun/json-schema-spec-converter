@@ -24,6 +24,11 @@ public final class ElementAddress extends Element {
 
     @Override
     public String convert(Map<String, Anchor> anchors) {
-        return elementPostal.convert(anchors) + elementEmail.convert(anchors) + elementUri.convert(anchors);
+        var content = "";
+        if (elementPostal != null) content += elementPostal.convert(anchors);
+        content += elementEmail.convert(anchors);
+        if (elementUri != null) content += elementUri.convert(anchors);
+
+        return content;
     }
 }

@@ -32,6 +32,12 @@ public final class ElementRfc extends Element {
     public String convert(Map<String, Anchor> anchors) {
         var content = elementFront.convert(anchors) + elementMiddle.convert(anchors) + elementBack.convert(anchors);
 
+        // Add authors
+        content += "## Authors' Addresses\n\n";
+        content += elementFront.elementAuthorList().stream()
+                .map(elementAuthor -> elementAuthor.convert(anchors))
+                .collect(Collectors.joining());
+
         // Remove fences that hold padding in nested lists.
         content = content.lines()
                 .map(line -> {
